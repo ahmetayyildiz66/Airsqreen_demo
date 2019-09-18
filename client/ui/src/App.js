@@ -1,26 +1,82 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      latitude: "",
+      longitude: "",
+      temp: "",
+      humidity: "",
+      pressure: "",
+      temp_min: "",
+      temp_max: ""
+    };
+  }
+
+  render() {
+    const { latitude, longitude } = this.state;
+
+    return (
+      <div>
+        <form onSubmit={this.submitHandler}>
+          <div>
+            <label className="latitude">
+              Latitude:
+              <input
+                type="text"
+                name="latitude"
+                value={latitude}
+                onChange={this.changeHandler}
+              />
+            </label>
+
+            <label className="longitude">
+              Longitude:
+              <input
+                type="text"
+                name="longitude"
+                value={longitude}
+                onChange={this.changeHandler}
+              />
+            </label>
+          </div>
+          <button
+            className="submitBtn"
+            type="submit"
+            onChange={this.changeHandler}
+          >
+            Submit
+          </button>
+        </form>
+
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Temperature</th>
+                <th>Pressure</th>
+                <th>Humidity</th>
+                <th>Temp Max</th>
+                <th>Temp Min</th>
+              </tr>
+              <tr>
+                <td>{this.state.temp}</td>
+                <td>{this.state.pressure}</td>
+                <td>{this.state.humidity}</td>
+                <td>{this.state.temp_min}</td>
+                <td>{this.state.temp_max}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

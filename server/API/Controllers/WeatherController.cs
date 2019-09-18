@@ -19,9 +19,9 @@ namespace API.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Dom value)
+        public void Post([FromBody] Location value)
         {
-            
+
         }
 
     }
