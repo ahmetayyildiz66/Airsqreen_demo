@@ -25,7 +25,7 @@ class App extends Component {
   submitHandler = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/weather", this.state)
+      .post("https://airsqreen.azurewebsites.net/api/weather", this.state)
       .then(response => {
 
         this.setState({temp: response.data.main.temp});

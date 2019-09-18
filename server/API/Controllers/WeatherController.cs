@@ -37,5 +37,10 @@ namespace API.Controllers {
             return result;
         }
 
+        [HttpGet]
+        public string Get(){
+            return "It works";
+        }
+
     }
 }
