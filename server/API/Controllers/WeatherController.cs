@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -10,11 +11,17 @@ namespace API.Controllers
     [ApiController]
     public class WeatherController : ControllerBase
     {
-        
+        private readonly IHttpClientFactory _httpClientFactory;
+        public WeatherController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Dom value)
         {
+            
         }
 
     }
