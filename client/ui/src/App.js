@@ -18,6 +18,27 @@ class App extends Component {
     };
   }
 
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  submitHandler = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/weather", this.state)
+      .then(response => {
+
+        this.setState({temp: response.data.main.temp});
+        this.setState({pressure: response.data.main.pressure});
+        this.setState({humidity: response.data.main.humidity});
+        this.setState({temp_min: response.data.main.temp_min});
+        this.setState({temp_max: response.data.main.temp_max});
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     const { latitude, longitude } = this.state;
 
